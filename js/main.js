@@ -1,33 +1,38 @@
 function validateForm(){
 	var nom = document.getElementById("name").value;
-	var ape = document.getElementById("lastname").value;
-	var cor = document.getElementById("input-email").value;
-	var contr = document.getElementById("input-password").value;
-	//var opcion = document.getElementById("checkbox").selectedIndex;
+	if( nom == null || nom.length == 0 || nom == ""){
+	  alert("Escribe un nombre.");
+	}else if ( /[0-9]/.test(nom)){
+		alert("nN ingrese números.")
+	}else if ( /^[a-z]/.test(nom.charAt(0)) ){
+		alert ("escriba el primer caracter en mayuscula")
+	}
 
-    if(nom == null || nom.length == 0 || /^\s+$/.test(nom) ) {
-        alert("Ingresa tu nombre.");
-        return false;
-    }
+	var apellido = document.getElementById("lastname").value;
+	if( apellido == null || apellido.length == 0 || apellido == ""){
+	  alert("Escribe tu apellido.");
+	}else if ( /[0-9]/.test(apellido)){
+		alert("No ingrese números.")
+	}else if ( /^[a-z]/.test(apellido.charAt(0)) ){
+		alert ("Escriba el primer caracter en mayúscula.")
+	}
 
-    if(ape == null || ape.length == 0 || /^\s+$/.test(ape) ) {
-        alert("Ingresa tu apellido");
-        return false;
-    }
+	var emailRegex=/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    cor = document.getElementById("input-email").value;
+    if(!emailRegex.test(cor)) {
+        alert("Ingrese un correo válido.");
+    };
     
-    if(cor == null || cor.length == 0 || /^\s+$/.test(cor) ) {
-        alert("Debes completar las casillas!");
-        return false;
-    }
-    
+    var contr = document.getElementById("input-password").value;
     if (contr.length <= 6 || contr.length == 0 || contr == "123456" || contr == "98754" || contr == "password" ) {
   		alert("Contraseña no válida.");
   		return false; 
 	}
-	/*
+	
+	var opcion = document.getElementById("checkbox").selectedIndex;
 	if( opcion == null || opcion == "" ) {
-	  alert("Por favor, seleccione una opción en checkbox.");
+	alert("Por favor, seleccione una opción en checkbox.");
 	}
 
-	return true;    */
+	return true;    
 }
